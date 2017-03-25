@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
-using System.Data.Linq;
 
-namespace DevFriends.Models
+namespace DevFriends.Models.Projects
 {
 	public class IndexViewModel
 	{
-		public IEnumerable<ProjectWithRelatedInfo> ProjectsWithContext { get; set; }
+		public IEnumerable<ProjectWithContext> ProjectsWithContext { get; set; }
 	}
 
-	public class ProjectWithRelatedInfo
+	public class ProjectWithContext
 	{
 		public string ProjectName { get; set; }
 		

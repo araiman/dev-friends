@@ -11,8 +11,7 @@ namespace DevFriends.Models
 	public class TagProjectRelation
 	{
 		[Key]
-		[Column("tag_id", 
-		Order = 0)]
+		[Column("tag_id", Order = 0)]
 		public int TagId { get; set; }
 
 		[Key]

@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using DevFriends.Models;
+using DevFriends.Models.Projects;
 
 namespace DevFriends.Controllers
 {
@@ -38,7 +39,7 @@ namespace DevFriends.Controllers
 					tagWithProjectRelation,
 					p => p.Id,
 					t => t.ProjectId,
-					(p, t) => new ProjectWithRelatedInfo
+					(p, t) => new ProjectWithContext
 					{
 						ProjectName = p.ProjectName,
 						OwnerName = p.OwnerName,

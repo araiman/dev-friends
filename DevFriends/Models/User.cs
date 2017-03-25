@@ -6,9 +6,6 @@ namespace DevFriends.Models
 	[Table("user", Schema = "devfriends")]
 	public class User
 	{
-		[Column("id")]
-		public string Id { get; set; }
-
 		[Key]
 		[MaxLength(20)]
 		[Column("user_id")]
@@ -19,9 +16,11 @@ namespace DevFriends.Models
 		[MaxLength(20)]
 		public string Name { get; set; }
 
+		[Column("link")]
 		[MaxLength(100)]
 		public string Link { get; set; }
 
+		[Column("profile")]
 		[MaxLength(300)]
 		public string Profile { get; set; }
 	}
