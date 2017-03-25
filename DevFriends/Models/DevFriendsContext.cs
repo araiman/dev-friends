@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
+﻿using System.Data.Entity;
 
 namespace DevFriends.Models
 {
-	public class DevFriendsContext : DbContext
+	public class ProjectsContext : DbContext
 	{
-		public DevFriendsContext() : base(nameOrConnectionString: "DevFriendsContext") { }
+		public ProjectsContext() : base(nameOrConnectionString: "ProjectsContext") { }
 
 		public DbSet<Project> Projects { get; set; }
 

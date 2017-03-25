@@ -17,12 +17,12 @@ namespace DevFriends.Controllers
 		{
 			var indexViewmodel = new IndexViewModel();
 
-			using (var devFriendsContext = new DevFriendsContext())
+			using (var projectsContext = new ProjectsContext())
 			{
 				// userのidを、Projectテーブル・Userテーブル間で異なる型を使用しているため落ちている。
 				// 型を変更し、落ちないようにすべし
-				var projectsWithUser = devFriendsContext.Projects.Join(
-					devFriendsContext.Users,
+				var projectsWithUser = projectsContext.Projects.Join(
+					projectsContext.Users,
 					p => p.OwnerId,
 					u => u.UserId,
 					(p, u) => new
@@ -33,8 +33,8 @@ namespace DevFriends.Controllers
 						OwnerName = u.Name,
 					});
 
-				var tagWithProjectRelation = devFriendsContext.Tags.Join(
-					devFriendsContext.TagProjectRelations,
+				var tagWithProjectRelation = projectsContext.Tags.Join(
+					projectsContext.TagProjectRelations,
 					t => t.Id,
 					r => r.TagId,
 					(t, r) => new
