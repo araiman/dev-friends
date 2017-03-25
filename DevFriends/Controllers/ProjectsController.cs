@@ -4,7 +4,7 @@ using DevFriends.Models;
 
 namespace DevFriends.Controllers
 {
-	public class DevFriendsController : Controller
+	public class ProjectsController : Controller
 	{
 		// GET: DevFriends
 		public ActionResult Index()

@@ -232,7 +232,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\DayController.cs" />
-    <Compile Include="Controllers\DevFriendsController.cs" />
+    <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\SummaryController.cs" />
     <Compile Include="Controllers\UtilController.cs" />
     <Compile Include="Global.asax.cs">
@@ -288,9 +288,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Day\Index.cshtml" />
-    <Content Include="Views\NiconicoCalendar\Summary.cshtml" />
-    <Content Include="Views\DevFriends\Index.cshtml" />
+    <Content Include="Views\Projects\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
