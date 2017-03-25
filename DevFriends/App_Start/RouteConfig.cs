@@ -16,7 +16,7 @@ namespace DevFriends
 			routes.MapRoute(
 				name: "Default",
 				url: "{controller}/{action}",
-				defaults: new { controller = "DevFriends", action = "Index" }
+				defaults: new { controller = "Projects", action = "Index" }
 			);
 		}
 	}

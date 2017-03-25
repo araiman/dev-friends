@@ -1,8 +1,5 @@
-﻿@model DevFriends.Models.IndexViewModel
-@{
-}
+﻿@model DevFriends.Models.Projects.IndexViewModel
 
-<body>
 <div id="layout" class="pure-g">
 	<div class="sidebar pure-u-1 pure-u-md-1-4">
 		<div class="header">
@@ -12,12 +9,10 @@
 	</div>
 	<div class="content pure-u-1 pure-u-md-3-4">
 		<div>
-			<!-- A wrapper for all the blog posts -->
-			@foreach (var projectWithContext in Model.ProjectsWithContext)
-			{
-				<div class="projects">
-					<h1 class="content-subhead">募集一覧</h1>
-					<!-- A single blog post -->
+			<div class="projects">
+				<h1 class="project-subhead">募集一覧</h1>
+				@foreach (var projectWithContext in Model.ProjectsWithContext)
+				{
 					<section class="project">
 						<header class="project-header">
 							<h2 class="project-title">@projectWithContext.ProjectName</h2>
@@ -34,14 +29,13 @@
 								@projectWithContext.ProjectDescription
 							</p>
 						</div>
-						<div class="application-buttons">
+						<div>
 							<a class="pure-button">応募する</a>
 							<a class="pure-button button-interested">興味ある</a>
 						</div>
 					</section>
-				</div>
-			}
+				}
+			</div>
 		</div>
 	</div>
 </div>
-</body>
