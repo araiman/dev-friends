@@ -13,7 +13,7 @@ namespace DevFriends.Controllers
 
 			using (var projectsContext = new ProjectsContext())
 			{
-				var projectsWithUser = projectsContext.Projects.Join(
+				var projectsWithOwnerName = projectsContext.Projects.Join(
 					projectsContext.Users,
 					p => p.OwnerId,
 					u => u.UserId,
@@ -25,7 +25,7 @@ namespace DevFriends.Controllers
 						OwnerName = u.Name,
 					});
 
-				var tagWithProjectRelation = projectsContext.Tags.Join(
+				var tagsWithProjectId = projectsContext.Tags.Join(
 					projectsContext.TagProjectRelations,
 					t => t.Id,
 					r => r.TagId,
@@ -35,8 +35,8 @@ namespace DevFriends.Controllers
 						t.Name
 					});
 
-				indexViewmodel.ProjectsWithContext = projectsWithUser.GroupJoin(
-					tagWithProjectRelation,
+				indexViewmodel.ProjectsWithContext = projectsWithOwnerName.GroupJoin(
+					tagsWithProjectId,
 					p => p.Id,
 					t => t.ProjectId,
 					(p, t) => new ProjectWithContext
