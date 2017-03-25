@@ -1,12 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Linq;
-using System.Linq;
-using System.Linq.Expressions;
+﻿using System.Linq;
 using System.Web.Mvc;
-using System.Web.UI;
 using DevFriends.Models;
-using WebGrease.Css.Extensions;
 
 namespace DevFriends.Controllers
 {
