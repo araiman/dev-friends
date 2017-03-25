@@ -6,15 +6,12 @@ namespace DevFriends.Controllers
 {
 	public class ProjectsController : Controller
 	{
-		// GET: DevFriends
 		public ActionResult Index()
 		{
 			var indexViewmodel = new IndexViewModel();
 
 			using (var projectsContext = new ProjectsContext())
 			{
-				// userのidを、Projectテーブル・Userテーブル間で異なる型を使用しているため落ちている。
-				// 型を変更し、落ちないようにすべし
 				var projectsWithUser = projectsContext.Projects.Join(
 					projectsContext.Users,
 					p => p.OwnerId,
