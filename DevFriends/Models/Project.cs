@@ -1,5 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.ModelConfiguration;
 
 namespace DevFriends.Models
 {
@@ -22,5 +24,20 @@ namespace DevFriends.Models
 		[Column("description")]
 		[MaxLength(300)]
 		public string Description { get; set; }
+
+		[Column("requirements")]
+		[MaxLength(300)]
+		public string Requirements { get; set; }
+
+		public virtual ICollection<TagProjectRelation> TagProjectRelations { get; set; }
+
+		public class EntityConfiguration : EntityTypeConfiguration<Project>
+		{
+			public EntityConfiguration()
+			{
+				HasMany(p => p.TagProjectRelations).WithMany().Map(
+					r => r.ToTable("TagProjectRelation").MapLeftKey("Id").MapRightKey("ProjectId"));
+			}
+		}
 	}
 }

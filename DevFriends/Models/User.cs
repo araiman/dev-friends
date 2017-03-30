@@ -16,12 +16,17 @@ namespace DevFriends.Models
 		[MaxLength(20)]
 		public string Name { get; set; }
 
+		[Column("description")]
+		[MaxLength(300)]
+		public string Profile { get; set; }
+
+		[Column("email")]
+		[MaxLength(256)]
+		[EmailAddress]
+		public string Email { get; set; }
+		
 		[Column("link")]
 		[MaxLength(100)]
 		public string Link { get; set; }
-
-		[Column("profile")]
-		[MaxLength(300)]
-		public string Profile { get; set; }
 	}
 }

@@ -17,5 +17,7 @@ namespace DevFriends.Models
 		[Key]
 		[Column("project_id", Order = 1)]
 		public int ProjectId { get; set; }
+
+		public virtual Project RelatedProject { get; set; }
 	}
 }

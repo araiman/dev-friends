@@ -9,11 +9,9 @@ namespace DevFriends.Models.Projects
 
 	public class ProjectWithContext
 	{
-		public string ProjectName { get; set; }
+		public Project Project { get; set; }
 		
 		public string OwnerName { get; set; }
-		
-		public string ProjectDescription { get; set; }
 		
 		public IEnumerable<string> TagNames { get; set; } 
 	}

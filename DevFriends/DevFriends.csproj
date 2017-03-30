@@ -236,6 +236,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ProjectsContext.cs" />
+    <Compile Include="Models\Projects\DetaiInputlViewModel.cs" />
     <Compile Include="Models\Projects\IndexViewModel.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\ProjectTagRelation.cs" />
@@ -247,6 +248,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Projects\detail.css" />
     <Content Include="Content\Projects\index.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -283,6 +285,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Projects\Index.cshtml" />
+    <Content Include="Views\Projects\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

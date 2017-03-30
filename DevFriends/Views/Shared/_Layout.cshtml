@@ -6,7 +6,6 @@
 	<meta name="description" content="A layout example that shows off a blog page with a list of posts.">
 	<title>@ViewBag.Title - My ASP.NET Application</title>
 	@Styles.Render("~/Content/css")
-	@Styles.Render("~/Content/Projects/index.css")
 	@Scripts.Render("~/bundles/modernizr")
 	<link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/grids-responsive-min.css">
@@ -20,15 +19,6 @@
 		</ul>
 	</div>
 	@RenderBody()
-	<div class="footer">
-		<div class="pure-menu pure-menu-horizontal">
-			<ul>
-				<li class="pure-menu-item"><a href="http://purecss.io/" class="pure-menu-link">About</a></li>
-				<li class="pure-menu-item"><a href="http://twitter.com/yuilibrary/" class="pure-menu-link">Twitter</a></li>
-				<li class="pure-menu-item"><a href="http://github.com/yahoo/pure/" class="pure-menu-link">GitHub</a></li>
-			</ul>
-		</div>
-	</div>
 	@Scripts.Render("~/bundles/jquery")
 	@Scripts.Render("~/bundles/bootstrap")
 	@RenderSection("scripts", required: false)

@@ -1,4 +1,6 @@
-﻿@model DevFriends.Models.Projects.IndexViewModel
+﻿@using DevFriends.Models.Projects
+@model DevFriends.Models.Projects.IndexViewModel
+@Styles.Render("~/Content/Projects/index.css")
 
 <div id="layout" class="pure-g">
 	<div class="sidebar pure-u-1 pure-u-md-1-4">
@@ -15,7 +17,17 @@
 				{
 					<section class="project">
 						<header class="project-header">
-							<h2 class="project-title">@projectWithContext.ProjectName</h2>
+							<h2 class="Project-title">
+								<a href="@Url.Action("Detail", "Projects", new
+									{
+
+										projectId = projectWithContext.Project.Id,
+										ownerId = projectWithContext.Project.OwnerId,
+										tagIdForRelatedProjects = projectWithContext.Project.TagProjectRelations.ToList().ElementAt(0).TagId
+									})">
+									@projectWithContext.Project.ProjectName
+								</a>
+							</h2>
 							<p class="project-meta">
 								By <a href="#" class="project-owner">@projectWithContext.OwnerName</a> under
 								@foreach (var tagName in projectWithContext.TagNames)
@@ -26,7 +38,7 @@
 						</header>
 						<div class="project-description">
 							<p>
-								@projectWithContext.ProjectDescription
+								@projectWithContext.Project.Description
 							</p>
 						</div>
 						<div>
