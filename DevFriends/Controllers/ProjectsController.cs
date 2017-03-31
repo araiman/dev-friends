@@ -50,28 +50,12 @@ namespace DevFriends.Controllers
 
 			using (var projectsContext = new ProjectsContext())
 			{
-				//var tagWithProjectRelations = projectsContext.Tags.Join(
-				//	projectsContext.TagProjectRelations,
-				//	t => t.Id,
-				//	r => r.TagId,
-				//	(t, r) => new
-				//	{
-				//		r.ProjectId,
-				//		Tag = t
-				//	}).ToList();
-
 				// Project
 				detailInputViewModel.Project = projectsContext.Projects.Single(p => p.Id == projectId);
 				
 				detailInputViewModel.Owner = projectsContext.Users.Single(u => u.UserId == ownerId);
 
 				detailInputViewModel.Tags = projectsContext.Tags.Where(t => t.TagProjectRelations.Any(r => r.ProjectId == projectId));
-				//detailInputViewModel.Tags = tagWithProjectRelations.Where(t => t.ProjectId == inputViewModel.Project.Id)
-				//	.Select(tp => tp.Tag);
-
-				//if (tagIdForRelatedProjects == null)
-				//	tagIdForRelatedProjects = projectsContext.Tags.Single(t => t.TagProjectRelations.Any(r => r.ProjectId == inputViewModel.RenderedProjectId)).Id;
-					//inputViewModel.TagIdForRelatedProjects = tagWithProjectRelations.Single(t => t.ProjectId == inputViewModel.Project.Id).Tag.Id;
 
 				var relatedProjects = new List<Project>();
 				foreach (var project in projectsContext.Projects.ToList())
@@ -79,15 +63,6 @@ namespace DevFriends.Controllers
 					if (project.TagProjectRelations.Any(r => r.TagId == tagIdForRelatedProjects))
 						relatedProjects.Add(project);	
 				}
-				//var relatedProjects = projectsContext.Projects.Join(
-				//	projectsContext.TagProjectRelations,
-				//	p => p.Id,
-				//	r => r.ProjectId,
-				//	(p, r) => new
-				//	{
-				//		p,
-				//		r.TagId
-				//	}).Distinct().Where(pt => pt.TagId == inputViewModel.TagIdForRelatedProjects.GetValueOrDefault()).Select(pr => pr.p);
 
 				var relatedProjectsCountToTook = relatedProjects.Count() >= 3 ? 3 : relatedProjects.Count();
 
