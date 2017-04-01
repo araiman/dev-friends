@@ -1,7 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity.Core.Objects.DataClasses;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web.Configuration;
 using System.Web.Mvc;
 using DevFriends.Models;
@@ -55,7 +58,7 @@ namespace DevFriends.Controllers
 				
 				detailInputViewModel.Owner = projectsContext.Users.Single(u => u.UserId == ownerId);
 
-				detailInputViewModel.Tags = projectsContext.Tags.Where(t => t.TagProjectRelations.Any(r => r.ProjectId == projectId));
+				detailInputViewModel.Tags = projectsContext.Tags.Where(t => t.TagProjectRelations.Any(r => r.ProjectId == projectId)).ToList();
 
 				var relatedProjects = new List<Project>();
 				foreach (var project in projectsContext.Projects.ToList())
@@ -68,6 +71,11 @@ namespace DevFriends.Controllers
 
 				detailInputViewModel.RelatedProjects = relatedProjects.Take(relatedProjectsCountToTook);
 			}
+
+			var md5 = new MD5CryptoServiceProvider();
+			var hasedEmail = BitConverter.ToString(md5.ComputeHash(Encoding.Default.GetBytes(detailInputViewModel.Owner.Email.Trim().ToLower())));
+			var fromattedEmailForGravatar = hasedEmail.Replace("-", "").ToLower();
+			detailInputViewModel.HashedOwnerEmailForProfileImage = fromattedEmailForGravatar;
 
 			return View(detailInputViewModel);
 		}
