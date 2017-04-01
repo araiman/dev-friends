@@ -1,0 +1,82 @@
+﻿@using DevFriends.Models
+@model DevFriends.Models.Projects.DetailInputViewModel
+@Styles.Render("~/Content/Projects/detail.css")
+
+
+<div id="layout" class="pure-g">
+	<div class="content pure-u-1 pure-u-md-3-4">
+		<div class="project">
+			<header class="project-header">
+				<h2 class="project-title">@Model.Project.ProjectName</h2>
+				<div class="owner-profile">
+					<img width="48" height="48" alt="avatar" class="post-avatar" src="https://www.gravatar.com/avatar/@Model.HashedOwnerEmailForProfileImage">
+					<div class="owner-profile-message">
+						<p>By @Model.Owner.Name</p>
+						<p>@Model.Owner.Profile</p>
+					</div>
+				</div>
+			</header>
+			<section class="descriptions">
+				<div class="description-item">
+					<h2 class="description-header">目的</h2>
+					<a class="post-category post-category-design" href="#">@Model.Tags.Single(t => t.Type == TagType.ProjectPurpose).Name</a>
+				</div>
+				<div class="description-item">
+					<h2 class="description-header">使用技術</h2>
+					@foreach (var tag in Model.Tags.Where(t => t.Type == TagType.Technology))
+					{
+						<a class="post-category post-category-design">@tag.Name</a>
+					}
+				</div>
+				<div class="description-item post-description">
+					<h2 class="description-header">概要</h2>
+					<p>@Model.Project.Description</p>
+				</div>
+				<div class="description-item">
+					<h2 class="description-header">どんな人を求めているか</h2>
+					<p>@Model.Project.Requirements</p>
+				</div>
+				<div class="description-item">
+					<h2 class="description-header">コンタクト情報</h2>
+					<table class="pure-table pure-table-bordered contact-table">
+						<tbody>
+						<tr>
+							<td>名前</td>
+							<td>@Model.Owner.Name</td>
+						</tr>
+						<tr>
+							<td>連絡先</td>
+							<td>@Model.Owner.Link</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</section>
+		</div>
+	</div>
+</div>
+<div class="sidebar pure-u-1 pure-u-md-1-4">
+	<div class="header">
+		<nav class="nav">
+			<ul class="nav-list">
+				<li class="applicant-button">
+					<a class="pure-button" href="http://purecss.io">応募する</a>
+				</li>
+				<li class="applicant-button">
+					<a class="pure-button" href="http://yuilibrary.com">興味ある</a>
+				</li>
+				<li class="related-projects">
+					<p>関連する募集</p>
+					<li class="related-project">
+						@foreach (var relatedProject in @Model.RelatedProjects)
+						{
+							<a class="pure-button related-project-button">
+								<p>@relatedProject.ProjectName</p>
+							</a>
+						}
+					</li>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</div>
